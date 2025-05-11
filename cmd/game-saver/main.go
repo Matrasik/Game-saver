@@ -3,6 +3,7 @@ package main
 import (
 	"Game-saver/config"
 	"fmt"
+	"log"
 	"os"
 )
 
@@ -11,7 +12,8 @@ func main() {
 	manager := config.Manager{configPath}
 	gameConfigs, err := manager.LoadGameConfigs()
 	if err != nil {
-		return // TODO Логировать
+		log.Fatalf("Error load configs: %s", err)
 	}
 	fmt.Printf("%#v", gameConfigs)
+
 }

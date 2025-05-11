@@ -1,13 +1,12 @@
 package game
 
 type Config struct {
-	ID          string
-	Name        string   // Человекочитаемое имя
-	SavePaths   []string // Пути к файлам сохранений
-	BackupLimit int      // Максимум версий бэкапов
+	Meta
+	SavePaths   []string `json:"savePaths"`   // Пути к файлам сохранений
+	BackupLimit int      `json:"backupLimit"` // Максимум версий бэкапов
 }
 
 type Meta struct {
-	ID   string
-	Name string
+	ID   string `json:"id"`
+	Name string `json:"name"`
 }
