@@ -1,8 +1,7 @@
-[{
-  "id": "hades",
-  "name": "Hades",
-  "save_paths": [
-    "C:/Users/Username/Documents/Saved Games/Hades"
-  ]
-}
+[
+	{
+		"id": "RiskOfRain2",
+		"name": "Risk of Rain 2",
+		"savePaths": ["C:\\Program Files (x86)\\Steam\\userdata\\301389463\\632360\\remote\\UserProfiles"]
+	}
 ]

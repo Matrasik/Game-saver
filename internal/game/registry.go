@@ -28,6 +28,7 @@ func (r *Registry) AddGame(game Config) error {
 	return nil
 }
 
+// Удаляем игру из мапы
 func (r *Registry) DeleteGame(id string) error {
 	_, loaded := r.games.Load(id)
 	if !loaded {
@@ -37,6 +38,7 @@ func (r *Registry) DeleteGame(id string) error {
 	return nil
 }
 
+// Ищем игру по мапе
 func (r *Registry) SearchGame(id string) (*Config, error) {
 	value, ok := r.games.Load(id)
 	if !ok {

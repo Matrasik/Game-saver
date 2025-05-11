@@ -2,8 +2,7 @@ package game
 
 type Config struct {
 	Meta
-	SavePaths   []string `json:"savePaths"`   // Пути к файлам сохранений
-	BackupLimit int      `json:"backupLimit"` // Максимум версий бэкапов
+	SavePaths []string `json:"savePaths"` // Пути к файлам сохранений
 }
 
 type Meta struct {
