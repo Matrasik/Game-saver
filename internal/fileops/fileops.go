@@ -1,6 +1,7 @@
 package fileops
 
 import (
+	"fmt"
 	"os"
 )
 
@@ -11,7 +12,17 @@ type FileOperator interface {
 }
 
 type OSFileOperator struct {
+	//Buffer map[string][]byte
 }
+
+//func NewOSFileOperator() *OSFileOperator{
+//	return &OSFileOperator{
+//		Buffer: make(map[string][]byte)}
+//}
+//
+//type DirContent struct {
+//	files map[string][]byte
+//}
 
 func (o *OSFileOperator) Copy(src, dst string) error {
 
@@ -19,7 +30,21 @@ func (o *OSFileOperator) Copy(src, dst string) error {
 }
 
 func (o *OSFileOperator) ReadAll(path string) (map[string][]byte, error) {
-	return nil, nil
+	m := make(map[string][]byte)
+	dir, err := os.ReadDir(path)
+	if err != nil {
+		return nil, fmt.Errorf("ошибка чтения папки %#v", err)
+	}
+	for _, elem := range dir {
+		if !elem.IsDir() {
+			file, err := os.ReadFile(path + string(os.PathSeparator) + elem.Name())
+			if err != nil {
+				return nil, fmt.Errorf("ошибка чтения файла %s, : %#v", elem.Name(), err)
+			}
+			m[elem.Name()] = file
+		}
+	}
+	return m, nil
 }
 
 func (o *OSFileOperator) Exists(path string) (bool, error) {
