@@ -2,7 +2,9 @@ package fileops
 
 import (
 	"fmt"
+	"log"
 	"os"
+	"path"
 )
 
 type FileOperator interface {
@@ -25,7 +27,18 @@ type OSFileOperator struct {
 //}
 
 func (o *OSFileOperator) Copy(src, dst string) error {
-
+	m, err := o.ReadAll(src)
+	if err != nil {
+		log.Printf("Ошибка чтения папки: %s", err)
+	}
+	//Цикл по мапе
+	for elem := range m {
+		folderPath := path.Join(dst, elem)
+		err = os.WriteFile(folderPath, m[elem], 0644)
+		if err != nil {
+			log.Printf("Ошибка создания файла на основе мапы: %s", err)
+		}
+	}
 	return nil
 }
 
@@ -45,6 +58,7 @@ func (o *OSFileOperator) ReadAll(path string) (map[string][]byte, error) {
 		}
 	}
 	return m, nil
+	//TODO Сделать еще и углубление в уровне папки. Сохранять в ту же мапу.
 }
 
 func (o *OSFileOperator) Exists(path string) (bool, error) {

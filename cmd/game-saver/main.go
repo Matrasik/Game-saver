@@ -14,16 +14,9 @@ func main() {
 
 	// поиск игры внутри мапы и замена файла в сохранении на файл из локального хранилища(если есть)
 	//operator := fileops.OSFileOperator{}
-	//m, err := operator.ReadAll("C:\\Users\\Марат\\Documents\\диплом")
+	//
+	//err := operator.Copy("C:\\Users\\Марат\\Documents\\Saved Games\\Hades", "C:\\Users\\Марат\\Documents\\Save_test")
 	//if err != nil {
-	//	log.Printf("Ошибка чтения папки: %s", err)
-	//}
-	////log.Printf("Файлы в папке:  %#v", m)
-	//err = os.WriteFile("C:\\Users\\Марат\\Documents\\Save_test\\ВКР_Ахметзянов_Отчет_по_практике.docx", m["ВКР_Ахметзянов_Отчет_по_практике.docx"], 0664)
-	//if err != nil {
-	//	log.Printf("Ошибка создания файла на основе мапы: %s", err)
-	//}
-	//for k := range m {
-	//	fmt.Println(k)
+	//	log.Printf("Ошибка копирования %s", err)
 	//}
 }
